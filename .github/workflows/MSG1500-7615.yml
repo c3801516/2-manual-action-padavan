@@ -46,8 +46,6 @@ jobs:
         git clone --depth=1 ${{ github.event.inputs.cloneurl }} $RT_N56U > /dev/null
         cd $RT_N56U/toolchain-mipsel
         sh dl_toolchain.sh > /dev/null
-    - name: SSH connection to Actions
-      uses: P3TERX/ssh2actions@main
     - name: Set Golang
       run: |
         cd /opt/hostedtoolcache/go
@@ -89,6 +87,8 @@ jobs:
         done
         md5sum *.trx >> readme.txt || echo
         ls -l
+    - name: SSH connection to Actions
+      uses: P3TERX/ssh2actions@main
     - name: 上传固件到Artifacts
       if: true
       uses: actions/upload-artifact@v2
