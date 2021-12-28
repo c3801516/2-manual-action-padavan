@@ -1,11 +1,11 @@
-name: MSG1500-7615手动云编译
+name: K2P手动云编译
 
 on:
   workflow_dispatch:
     inputs:
       production:
         description: 设置固件型号：
-        default: "MSG1500-7615"
+        default: "K2P"
         required: false
       cloneurl:
         description: 设置源码地址：
@@ -13,7 +13,7 @@ on:
         required: false
       release:
         description: 是否发布到Release？
-        default: 'yes'
+        default: 'no'
         required: false
 
 env:
@@ -49,8 +49,8 @@ jobs:
     - name: Set Golang
       run: |
         cd /opt/hostedtoolcache/go
-        echo "rm -rf /opt/hostedtoolcache/go/1.14.12"
-        mv 1.15.5 1.14.12
+        rm -rf /opt/hostedtoolcache/go/1.14.12
+        mv 1.15.15 1.14.12
     - name: 修改配置&开始编译
       run: |
         cwd=`pwd`
