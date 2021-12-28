@@ -51,7 +51,7 @@ jobs:
     - name: Set Golang
       run: |
         cd /opt/hostedtoolcache/go
-        rm -rf /opt/hostedtoolcache/go/1.14.12
+        echo "rm -rf /opt/hostedtoolcache/go/1.14.12"
         mv 1.15.5 1.14.12
     - name: 修改配置&开始编译
       run: |
